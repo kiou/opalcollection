@@ -1,0 +1,55 @@
+{% extends 'app/layout.html.twig' %}
+
+{% block title %} <title>Contact-us</title>{% endblock %}
+
+{% block content %}
+
+    {# En tête Page #}
+    <section class="headerPage">
+        <div class="inner">
+            <div class="headerPageContent"  style="background-image:url({{ asset('img/background-header.png') }})">
+                <div class="headerPageTitle">
+                    <div class="headerPageTitleInner">
+                        <h1>Contact us</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# Block contact top #}
+    <section class="section9">
+        <div class="inner">
+            <h2>Lorem ipsum</h2>
+            <p>Lorem ipsum dolor sit amet consectetur. Condimentum eu sit enim eu suspendisse id facilisi. Habitasse scelerisque malesuada tristique eu elementum lacinia ultrices. Felis nisl ornare amet vestibulum mattis facilisi ac lacus. Dis dui maecenas sed vulputate magna ultricies.
+                Eu amet vitae tellus risus at. Sed sit ut luctus tempor. Feugiat pellentesque vel integer arcu blandit arcu venenatis. Purus tincidunt ipsum quis odio aenean vel augue enim a. Nisl cursus mauris vitae tellus vitae dictum. Vulputate in scelerisque risus cum imperdiet a. Rhoncus erat consectetur lectus neque id enim pharetra volutpat praesent. Porttitor auctor auctor at ut risus praesent risus in. Amet in dictum hac metus dui potenti.</p>
+        </div>
+    </section>
+    
+    {# Formulaire #}
+    <section class="formulaire">
+        <div class="inner">
+
+            <div class="formulaireContent">
+
+                <div class="titre center">
+                    <h2>Get in Touch</h2>
+                    <p>Write to us for personalized travel advice or for information on group travel and last minute travel, all travel is insured and safe.</p>
+                </div>
+
+                {{ form_start(form) }}
+
+                    {{ form_errors(form) }}
+
+                    {{ form_rest(form) }}
+
+                {{ form_end(form) }}
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section10" style="background-image:url({{ asset('img/background-formulaire.png') }})">
+    </section>
+
+{% endblock %}

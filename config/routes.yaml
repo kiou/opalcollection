@@ -1,0 +1,29 @@
+app_index:
+    path: /{_locale}/
+    controller: App\Controller\GlobalController::index
+
+app_index_nolocale:
+    path: /
+    controller: App\Controller\GlobalController::indexnolocale
+
+app_logout:
+    path: /logout
+
+app_thecollection_view:
+    path: /{_locale}/the-collection/{slug}/{id}
+    defaults: { _controller: App\Controller\TheCollectionController::view }
+    requirements:
+        slug: ([a-z-0-9]*)
+        id: \d+
+
+app_contact:
+    path: /{_locale}/contact-us
+    controller: App\Controller\ContactController::index
+
+sendcontact:
+    path: contact-validation
+    controller: App\Controller\ContactController::send
+
+app_about:
+    path: /{_locale}/about-us
+    controller: App\Controller\AboutFullController::index

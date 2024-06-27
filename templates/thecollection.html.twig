@@ -1,0 +1,108 @@
+{% extends 'app/layout.html.twig' %}
+
+{% block content %}
+
+    {# En tête #}
+    <section class="section1 theCollection">
+        <div class="inner">
+            <div class="owl-one owl-carousel owl-theme">
+                {% for header in theCollection.headerimages %}
+                    <div class="slide-item" style="background-image:url({{ asset('img/upload/' ~ header.url) }})">
+                        <div class="headerSlide">
+                            <div class="headerSlideContent">
+                                <h1>{{ theCollection.title }}</h1>
+
+                                {% if theCollection.link is not null %}
+                                    <div class="headerPortailLink">
+                                        <a href="{{ theCollection.link }}" class="btn">Read more</a>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="theCollectionMenu">
+                <ul>
+                    <li><a href="#presentation">Presentation</a></li>
+                    <li><a href="#download">Downloads</a></li>
+                    <li><a href="#picture">Pictures</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    {# Content Wysiwyg #}
+    <div class="section5">
+        <div class="inner pageContent" id="presentation">
+            <div class="presentationLogo">
+                <img src="{{ asset('img/upload/' ~ theCollection.logo) }}">
+            </div>
+
+            {{ theCollection.content|raw }}
+        </div>
+    </div>
+
+    {# Téléchargements #}
+    <div class="section6">
+        <div class="inner" id="download">
+            <h2>Downloads</h2>
+
+            {% for lien in theCollection.telechargements %}
+                <a href="{{ asset('img/upload/' ~ lien.url) }}" class="btn" target="_blank">{{ lien.title }}</a>
+            {% endfor %}
+        </div>
+    </div>
+
+    {# Réseaux #}
+    <div class="section7">
+        <div class="inner">
+            {% if theCollection.youtube is not null  %}
+                <a href="{{ theCollection.youtube }}" target="_blank"><i class="fab fa-youtube"></i></a>
+            {% endif %}
+            {% if theCollection.facebook is not null  %}
+                <a href="{{ theCollection.facebook }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            {% endif %}
+            {% if theCollection.linkedin is not null  %}
+                <a href="{{ theCollection.linkedin }}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            {% endif %}
+            {% if theCollection.instagram is not null  %}
+                <a href="{{ theCollection.instagram }}" target="_blank"><i class="fab fa-instagram"></i></a>
+            {% endif %}
+        </div>
+    </div>
+
+    {# Galerie photo #}
+    <div class="section8">
+        <div class="inner" id="picture">
+            <div class="titre center">
+                <h2>Lorem ipsum</h2><h2>dolor sit amet</h2>
+            </div>
+
+            {% if theCollection.galeries is not null %}
+                <div class="section8GaleriesChoix">
+                    {% for galeries in theCollection.galeries %}
+                        <a href="slider{{ galeries.id }}">{{ galeries.title }}</a>
+                    {% endfor %}   
+                </div>
+            {% endif %}
+
+            {% for galeries in theCollection.galeries %}
+                <div class="owl-two owl-carousel owl-theme" id="slider{{ galeries.id }}">
+                    {% for galerie in galeries.galerieimages %}
+                        <div class="slide-item">
+                            <img src="{{ asset('img/upload/' ~ galerie.url) }}">
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    {# Mise en avant #}
+    {{ render(controller('App\\Controller\\AvantController::view')) }} 
+
+    {# A propos #}
+    {{ render(controller('App\\Controller\\AboutController::view')) }} 
+
+{% endblock %}

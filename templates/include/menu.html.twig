@@ -1,0 +1,47 @@
+<nav class="navigation">
+
+    <div class="inner">
+
+        <div class="navigationMenuLogo">
+            <a href="{{path('app_index') }}">
+                <img src="{{ asset('img/logo-opal.png') }}">
+            </a>
+        </div>
+
+        <div class="navigationMenuCenter">
+            <ul>
+                <li><a href="{{ path('app_index') }}">Home</a></li>
+                <span></span>
+                <li class="accordion">
+                    <a href="#">The Collection <i class="fas fa-sort-down"></i></a>
+                    <ul class="accordion-content">
+                        {% set currentPays = null %}
+                        {% for theCollection in theCollectionsMenu %}
+                            {% if currentPays != theCollection.pays.name %}
+                                <p><span class="theCollectionMenuPaysColor" style="background-color:{{theCollection.pays.color}}"></span>{{ theCollection.pays.name }}</p>
+                                {% set currentPays = theCollection.pays.name %}
+                            {% endif %}
+                            <li><a href="{{ path('app_thecollection_view',{'slug': theCollection.slug, 'id': theCollection.id})}}">{{ theCollection.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <span></span>
+                <li><a href="{{ path('app_about') }}">About us</a></li>
+                <span></span>
+                <li><a href="{{ path('app_contact') }}">Contact us</a></li>
+            </ul>
+        </div>
+
+        <div class="navigationRightMobileMenu">
+            <button class="menu-btn" id="menu-btn">
+                <span class="menu-btn__line"></span>
+                <span class="menu-btn__line"></span>
+                <span class="menu-btn__line"></span>
+            </button>
+        </div>
+
+        <div class="clear"></div>
+
+    </div>
+    
+</nav>

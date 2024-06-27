@@ -1,0 +1,30 @@
+<section class="section4">
+    <div class="inner">
+        
+        <div class="section4AboutImg">
+            <img src="{{ asset('img/notre-vision.jpg')}}" class="section4AboutImgVision">
+            <img src="{{ asset('img/upload/' ~ about.imageodile) }}" class="section4AboutImgOdile">
+        </div>
+
+        <div class="section4AboutContent">
+            <div class="section4AboutVision">
+                <h2>{{ about.titlevision }}</h2>
+                <div class="pageContent">
+                    {{ about.contentvision|raw }}
+                </div>
+            </div>
+
+            <div class="section4AboutOdile">
+                <h2>{{ about.titleodile }}</h2>
+                <div class="pageContent">
+                    {{ about.contentodile|raw }}
+                </div>
+            </div>
+
+            <div class="section4AboutBtn">
+                <a href="{{ path('app_about') }}" class="btn">Read more</a>
+            </div>
+        </div>
+
+    </div>
+</section>

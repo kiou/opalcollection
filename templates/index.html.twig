@@ -1,0 +1,86 @@
+{% extends 'app/layout.html.twig' %}
+
+{% block content %}
+
+    {# En tête accueil #}
+    <section class="section1">
+        <div class="inner">
+            <div class="owl-one owl-carousel owl-theme">
+                {% for header in headers %}
+                    <div class="slide-item" style="background-image:url({{ asset('img/upload/' ~ header.image) }})">
+                        <div class="headerSlide">
+                            <div class="headerSlideContent">
+                                <h1>{{ header.title }}</h1>
+
+                                {% if header.link is not null %}
+                                    <div class="headerPortailLink">
+                                        <a href="{{ header.link }}" class="btn">Read more</a>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    {# The collection Home #}
+    <section class="section2">
+        <div class="inner">
+            <div class="titre">
+                <h2>Opal Collection</h2>
+                <p>Opal Collection provides exclusive representation services in the European market for high-end latin american products that help preserve the heritage and culture of their region and whose focus is to deliver unique and unforgettable experiences to their guests with the highest standards of service and gastronomy.</p>
+            </div>
+
+            <div class="section2PaysListe">
+                {% for pay in pays %}
+                    <div class="section2Pays {{ pay.code }}">
+                        <img src="{{ asset('img/upload/' ~ pay.image) }}">
+                        <a href="" data-code="{{ pay.code }}">{{ pay.name }}</a>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="section2CartesListe" id="section2CartesListe">
+                {% for theCollection in theCollections %}
+                    <div class="collectionCarte {{ theCollection.pays.code }}" data-code="{{ theCollection.pays.code }}">
+                        <div class="collectionCarteImg">
+                            <img src="{{ asset('img/miniature/' ~ theCollection.imagecarte) }}">
+
+                            <div class="collectionCarteDwn">
+                                <a href="#"><i class="fas fa-download"></i> Download</a>
+                            </div>
+                        </div>
+                        <div class="collectionCarteContent">
+                            <div class="collectionCarteContentHeader">
+                                <div class="collectionCarteContentHeaderLeft">
+                                    <h3>{{ theCollection.title }}</h3>
+                                    <p><i class="fas fa-map-marker-alt"></i> {{ theCollection.pays.name }}</p>
+                                </div>
+                                <div class="collectionCarteContentHeaderRight">
+                                    <img src="{{ asset('img/upload/' ~ theCollection.logo) }}">
+                                </div>
+                            </div>
+
+                            <div class="collectionCarteContentResume">
+                                <p>{{ theCollection.resume|raw }}</p>
+                            </div>
+
+                            <div class="collectionCarteContentBtn">
+                                <a href="{{ path('app_thecollection_view',{'slug': theCollection.slug, 'id': theCollection.id})}}" class="btn">Read more</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    {# Mise en avant #}
+    {{ render(controller('App\\Controller\\AvantController::view')) }} 
+
+    {# A propos #}
+    {{ render(controller('App\\Controller\\AboutController::view')) }} 
+
+{% endblock %}

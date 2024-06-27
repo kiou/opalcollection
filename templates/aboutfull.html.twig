@@ -1,0 +1,107 @@
+{% extends 'app/layout.html.twig' %}
+
+{% block title %} <title>Contact-us</title>{% endblock %}
+
+{% block content %}
+
+    {# En tête Page #}
+    <section class="headerPage">
+        <div class="inner">
+            <div class="headerPageContent"  style="background-image:url({{ asset('img/background-aboutus.png') }})">
+                <div class="headerPageTitle">
+                    <div class="headerPageTitleInner">
+                        <h1>About us</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# About en tête Odile #}
+    <section class="section4">
+        <div class="inner">
+
+            <div class="section4AboutImg">
+                <img src="{{ asset('img/notre-vision.jpg')}}" class="section4AboutImgVision">
+                <img src="{{ asset('img/upload/' ~ aboutFull.imageodile) }}" class="section4AboutImgOdile">
+            </div>
+
+            <div class="section4AboutContent">
+                <div class="section4AboutOdile">
+                    <h2>{{ aboutFull.titleodile }}</h2>
+                    <div class="pageContent">
+                        {{ aboutFull.contentodile|raw }}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    {# About listes #}
+    <section class="section11">
+        <div class="inner">
+
+            <div class="section11Listes">
+
+                <div class="section11ListesLeft">
+                    <div class="section11Liste">
+                        <h2>{{ aboutFull.titlephilo }}</h2>
+                        <div class="section11ListeContent pageContent">
+                            {{ aboutFull.contentphilo|raw }}
+                        </div>
+                    </div>
+
+                    <div class="section11Liste">
+                        <h2>{{ aboutFull.titlemission }}</h2>
+                        <div class="section11ListeContent pageContent">
+                            {{ aboutFull.contentmission|raw }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section11ListesRight">
+                    <div class="section11Liste">
+                        <h2>{{ aboutFull.titlevision }}</h2>
+                        <div class="section11ListeContent pageContent">
+                            {{ aboutFull.contentvision|raw }}
+                        </div>
+
+                        <a href="{{ path('app_contact') }}" class="btn">Contact Us</a>
+                    </div>
+                </div>
+
+                <div class="clear"></div>
+            </div>
+
+        </div>
+    </section>
+
+    {# Les services #}
+    <section class="section12">
+        <div class="inner">
+            <div class="titre center">
+                <h2>Services</h2>
+            </div>
+
+            <div class="section12Services">
+                {% for service in services %}
+                    <div class="section12Service">
+                        <div class="section12ServiceImg">
+                            <img src="{{ asset('img/miniature/' ~ service.image) }}">
+
+                            <div class="section12ServiceCategorie">
+                                <p>{{ service.categorie }}</p>
+                            </div>
+                        </div>
+                        <div class="section12ServiceContent">
+                            <h3>{{ service.title }}</h3>
+                            <p>{{ service.content }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,11 @@
+{% if field.value is not empty %}
+    <div class="image-previews">
+        {% for image in field.value %}
+            <div class="image-preview">
+                <img src="{{ asset('/img/miniature/' ~ image.url) }}" style="max-height: 75px;"/>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <span class="badge badge-outline">Aucun(e)</span>
+{% endif %}

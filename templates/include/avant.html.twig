@@ -1,0 +1,22 @@
+<section class="section3">
+    <div class="section3Filtre"></div>
+    <div class="inner">
+        <div class="section3AvantImg">
+            <img src="{{ asset('img/miniature/' ~ avant.image) }}">
+        </div>
+
+        <div class="section3AvantContent">
+            <div class="section3AvantContentTitle">
+                <h2>{{ avant.title }}</h2>
+            </div>
+            <div class="section3AvantContentResume">
+                <p>{{ avant.resume }}</p>
+            </div>
+            <div class="section3AvantContentListe">
+                {{avant.content|raw }}
+            </div>
+
+            <a href="#" class="btn">Read more</a>
+        </div>
+    </div>
+</section>
